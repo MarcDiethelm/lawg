@@ -7,6 +7,8 @@
 
 	var  w = window
 		,c
+		,isElement
+		,isjQuery
 	;
 	
 	function concatArgs(args) {
@@ -61,16 +63,16 @@
 	
 	//Resulting function returns true if param is a DOM element
 	if (typeof HTMLElement === 'object')
-		function isElement(obj) { return obj instanceof HTMLElement }
+		isElement = function(obj) { return obj instanceof HTMLElement }
 	else
-		function isElement(obj) { return typeof obj == 'object' && obj.nodeType === 1 && typeof obj.nodeName==='string' }
+		isElement = function(obj) { return typeof obj == 'object' && obj.nodeType === 1 && typeof obj.nodeName==='string' }
 	
 	// Resulting function returns true if param is a jQuery object
 	try {
 		$() instanceof jQuery; // abusing try/catch for flow control. Old crappy browsers (I'm lookin at you IE) will throw.
-		function isjQuery(obj) { return obj instanceof jQuery }
+		isjQuery = function(obj) { return obj instanceof jQuery }
 	} catch (e) {
-		function isjQuery(obj) { return 'jquery' in obj && typeof obj.jquery == 'string' }
+		isjQuery = function(obj) { return 'jquery' in obj && typeof obj.jquery == 'string' }
 	}
 	
 	if (w.console) {
