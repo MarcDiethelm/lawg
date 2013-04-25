@@ -2,7 +2,7 @@
  * Global development and debugging helper
  * Author: Marc Diethelm
  */
- 
+
 (function() {
 
 	var  w = window
@@ -12,13 +12,13 @@
 	;
 	
 	function concatArgs(args) {
-		
 		var str = ''
 			,i
 			,arg
 			,delim = '  '
 		;
-		for (i = 0, str = ''; i<args.length; i++) {
+
+		for (i = 0; i<args.length; i++) {
 			arg = args[i];
 			if (arg !== undefined && arg !== null) {
 				
@@ -41,7 +41,6 @@
 	}
 	
 	function elementToString(elem) {
-		
 		var htmlId = ''
 		    ,htmlClass = ''
 		;
