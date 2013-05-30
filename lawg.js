@@ -3,7 +3,7 @@
  * Author: Marc Diethelm
  */
 
-(function() {
+;(function() {
 
 	var  w = window
 		,c
