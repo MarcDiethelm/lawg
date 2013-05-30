@@ -10,6 +10,11 @@
 		,isElement
 		,isjQuery
 		,isArray
+		,fn = 'function'
+		,cMethods = ['log', 'info', 'debug', 'error', 'dir', 'table']
+		,method
+		,i
+		,len
 	;
 
 	function concatArgs(args, nestedCall) {
@@ -88,12 +93,9 @@
 	if (w.console) {
 		c = console;
 		if ('dir' in c && 'apply' in c.dir) { // create global shortcuts
-			typeof c.log   === 'function' && ( w.log   = function() { c.log.apply(c, arguments) } );
-			typeof c.info  === 'function' && ( w.info  = function() { c.info.apply(c, arguments) } );
-			typeof c.debug === 'function' && ( w.debug = function() { c.debug.apply(c, arguments) } );
-			typeof c.error === 'function' && ( w.error = function() { c.error.apply(c, arguments) } );
-			typeof c.dir   === 'function' && ( w.dir   = function() { c.dir.apply(c, arguments) } );
-			typeof c.table === 'function' && ( w.table = function() { c.table.apply(c, arguments) } );
+			for (i=0, len = cMethods.length; i<len && (method = cMethods[i]); i++) {
+				typeof c[method] === fn && ( w[method] = function() { c[method].apply(c, arguments) } );
+			}
 		}
 		else { // IE: we have console.log but it just accepts one param. let's fix that! :)
 			w.log = function() {
