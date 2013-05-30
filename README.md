@@ -25,19 +25,3 @@ Lawg's window.log() will concatenate and output anything (eventually maybe) you 
 	the previous console output is cleared before logging. 
 - Lawg extends jQuery with an alert method. Output any jQuery collection to an alert with
 		$(selector).alert()
-
-
-## TO DO
-- Test if window.log still works in IE \w Dev Tools.
-- Refactor... Use a namespace/object 'lawg' and make the utility function its children.
-	Allows user configuration before initialization. Exposes the concatenate and *toString functions for external use.
-	Also proves to any potential reviewer that I know OOP. Actually that's the main reason. So silly.
-- Handling of jQuery availability
-- Add quotes to the jQuery representation?
-- Write tests. Test driven development. Yay!
-- Write build script. Learn to work with Grunt. Yay!
-- More *toString functions. (?) (Look at how Node does it.)
-	- Display error objects nicely.
-	- Display arrays nicely.
-	- Emulate console.dir in alert(?)
-- More global console methods(?)
