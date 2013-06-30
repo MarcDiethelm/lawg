@@ -83,7 +83,7 @@
 		$() instanceof jQuery; // abusing try/catch for flow control. Old crappy browsers (I'm lookin at you IE) will throw.
 		isjQuery = function(obj) { return obj instanceof jQuery }
 	} catch (e) {
-		isjQuery = function(obj) { return 'jquery' in obj && typeof obj.jquery == 'string' }
+		isjQuery = function(obj) { return typeof obj == 'object' && 'jquery' in obj && typeof obj.jquery == 'string' }
 	}
 
 	isArray = Array.isArray || function(obj) {
