@@ -11,7 +11,7 @@
 		,isjQuery
 		,isArray
 		,fn = 'function'
-		,cMethods = ['log', 'info', 'debug', 'error', 'dir', 'table']
+		,cMethods = ['log', 'info', 'debug', 'warn', 'error', 'dir', 'table']
 		,method
 		,i
 		,len
@@ -94,7 +94,9 @@
 		c = console;
 		if ('dir' in c && 'apply' in c.dir) { // create global shortcuts
 			for (i=0, len = cMethods.length; i<len && (method = cMethods[i]); i++) {
-				typeof c[method] === fn && ( w[method] = function() { c[method].apply(c, arguments) } );
+				typeof c[method] === fn && ( function(method) { // create a new scope to preserve the value of method
+					w[method] = function() { c[method].apply(c, arguments) }
+				} )(method);
 			}
 		}
 		else { // IE: we have console.log but it just accepts one param. let's fix that! :)
