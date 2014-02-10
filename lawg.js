@@ -87,9 +87,9 @@
 	}
 
 	isArray = Array.isArray || function(obj) {
-		return Object.prorotype.toString.call(obj) == '[object Array]';
+		return Object.prototype.toString.call(obj) == '[object Array]';
 	};
-	
+
 	if (w.console) {
 		c = console;
 		if ('dir' in c && 'apply' in c.dir) { // create global shortcuts
