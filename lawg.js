@@ -103,14 +103,24 @@
 			w.log = function() {
 				c.log(concatArgs(arguments));
 			}
+
+			w.info = function() {
+				c.log(concatArgs(arguments));
+			}
+
+			w.dir = function() {
+				c.log(concatArgs(arguments));
+			}
 		}
 
 		clear = c.clear; // supported in IE and Fx
 	}
 	else {
 		w.log = function() { alert(concatArgs(arguments)) };
+		w.info = function() { alert(concatArgs(arguments)) };
+		w.dir = function() { alert(concatArgs(arguments)) };
 	}
-	
+
 	w._alert = function() { alert(concatArgs(arguments)) };
 
 	/**
